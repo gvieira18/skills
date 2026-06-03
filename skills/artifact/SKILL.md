@@ -31,17 +31,46 @@ orchestrates briefing, narrative articulation, and HTML generation (via
    Show the brief to the user. If you can't formulate the thesis, ask for
    more context — don't proceed without clarity.
 
-3. **Prepare the build.**
+3. **Choose palette.** Present the palette menu to the user using `AskUserQuestion`.
+   Read `references/palette.md` for the full catalog. Offer these options:
+
+   | Option | Description |
+   |--------|-------------|
+   | **Deep Blue + Violeta** | Royal indigo, neon violet/teal — dark |
+   | **Zinc + Emerald** | Neutral dark zinc, green/purple — dark |
+   | **Community Purple** (default) | Deep purple, pink/teal (he4rt) — dark |
+   | **Cyber Terminal** | Navy terminal, neon green/cyan — dark |
+   | **Cyberpunk Neon** | Near-black, max neon glows — dark |
+   | **Light Paper** | Warm off-white, blue/violet — light |
+   | **Light Stone** | Warm taupe, amber/purple jewels — light |
+   | **Auto** | Let the AI choose the best palette for this narrative |
+
+   AskUserQuestion only supports 4 options — group them sensibly (e.g.
+   "Dark: Community Purple (default)", "Dark: other...", "Light: pick one...",
+   "Auto"). If the user picks a group, follow up with the specific choices.
+
+   - If a specific palette is chosen → read it from
+     `references/palettes/<file>.md`
+   - If **Auto** is chosen → do NOT read any palette file yet. Instead,
+     pass the full palette catalog table (from `references/palette.md`) to
+     `frontend-design` with this instruction: "Choose the palette that best
+     serves this narrative's mood and audience. Read the palette you pick
+     from `references/palettes/<file>`. If none fits, invent a custom
+     palette using the same CSS variable names."
+
+4. **Prepare the build.**
    - Generate a kebab-case slug from the topic
    - `mkdir -p /tmp/artifacts`
    - Output path: `/tmp/artifacts/<YYYY-MM-DD>-<slug>.html`
-   - Read `references/palette.md` for the CSS `:root` block
+   - Read the selected palette file (unless Auto — see step 3)
    - Read `references/art-direction.md` for taxonomy and visual vocabulary
 
-4. **Invoke `frontend-design`.** Use the Skill tool passing this context:
+5. **Invoke `frontend-design`.** Use the Skill tool passing this context:
    - The narrative brief from step 2
    - The GUARDRAILS block (below) — pass it verbatim
-   - The palette from `references/palette.md` (CSS variables + contrast rules)
+   - The palette (CSS variables + contrast rules) — either the specific
+     palette chosen in step 3, or the full catalog + auto-selection
+     instruction
    - The art-direction defaults from `references/art-direction.md`
      (taxonomy, typography, tempero) — note these are defaults that
      `frontend-design` may override if the briefing warrants
@@ -49,16 +78,16 @@ orchestrates briefing, narrative articulation, and HTML generation (via
      You are not restricted to any template."
    - Instruction: "Save the file to `<path>`"
 
-5. **Deliver.** Print the path as a clickable link:
+6. **Deliver.** Print the path as a clickable link:
    `file:///tmp/artifacts/<YYYY-MM-DD>-<slug>.html`
    Never auto-open the browser.
 
-6. **Approval gate.** Ask the user: approved, or "adjust: ...".
+7. **Approval gate.** Ask the user: approved, or "adjust: ...".
    - **"adjust: ..."** → re-invoke `frontend-design` with the delta appended
-     to the original context. Overwrite the same file. Loop to step 5.
-   - **Approved** → proceed to step 7.
+     to the original context. Overwrite the same file. Loop to step 6.
+   - **Approved** → proceed to step 8.
 
-7. **Upload offer.** After approval, ALWAYS ask: "Want me to upload to
+8. **Upload offer.** After approval, ALWAYS ask: "Want me to upload to
    waifuvault for a shareable link?" This is a separate, explicit question —
    never skip it.
    - **Yes** → run the upload command below, show the URL.

@@ -1,40 +1,34 @@
-# Palette (dark deep-blue + violeta)
+# Palette Catalog
 
-Drop this `:root` block into the artifact's `<style>`. To use your own
-palette, replace this file — keep the same variable names so the taxonomy
-and tempero references in `art-direction.md` still work.
+Available palettes for artifacts. Each file in `references/palettes/` contains
+a full `:root` CSS block, contrast rules, and extra color values — all using the
+same variable names so `art-direction.md` references work unchanged.
 
-```css
-:root {
-  /* base */
-  --bg:#0a0911; --surface:#15121f; --surface-2:#1d1929; --border:#2c2740;
-  --text:#f3f1f9; --muted:#9990ad; --faint:#5a5470;
+## Dark palettes
 
-  /* brand + accents */
-  --brand:#1f109b; --brand-2:#782bf1; --brand-soft:#8f83ec;
-  --accent-mag:#610e5c; --accent-mag-bright:#e359db;
-  --teal:#084d6e; --teal-bright:#37b5f0;
+| # | Name | File | Mood |
+|---|------|------|------|
+| 1 | **Deep Blue + Violeta** | `palettes/deep-blue.md` | Royal indigo, neon violet/teal accents |
+| 2 | **Zinc + Emerald** | `palettes/zinc-emerald.md` | Neutral dark zinc, green/purple accents |
+| 3 | **Community Purple** ★ default | `palettes/community-purple.md` | Deep purple, pink/teal accents (he4rt brand) |
+| 4 | **Cyber Terminal** | `palettes/cyber-terminal.md` | Navy terminal, neon green/cyan/red |
+| 5 | **Cyberpunk Neon** | `palettes/cyberpunk-neon.md` | Near-black, max neon cyan/magenta/orange glows |
 
-  /* semantic: type/category colors */
-  --t-pr:#782bf1; --t-issue:#37b5f0; --t-commit:#8f83ec;
-  --t-review:#e359db; --t-comment:#37b5f0; --t-reaction:#e7746a;
+## Light palettes
 
-  /* semantic: state */
-  --st-merged:#9f6dee; --st-open:#4ceb47; --st-closed:#e7746a;
+| # | Name | File | Mood |
+|---|------|------|------|
+| 6 | **Light Paper** | `palettes/light-paper.md` | Warm off-white, blue/violet accents |
+| 7 | **Light Stone** | `palettes/light-stone.md` | Warm taupe, amber/purple jewel-tone accents |
 
-  /* semantic: diff */
-  --add:#81d577; --del:#e7746a;
-}
-```
+## Auto mode
 
-## Contrast rule
+When the user picks **"auto"**, do NOT read any palette file yet. Instead,
+pass this instruction to `frontend-design`:
 
-Dark saturated hexes (`--brand`, `--accent-mag`, `--teal`) are for
-backgrounds and surfaces. For text on dark backgrounds, use their bright
-siblings (`--brand-soft`, `--accent-mag-bright`, `--teal-bright`,
-`--st-open`, `--add`). Never put `--brand` text directly on `--bg`.
+> "Choose the palette that best serves this narrative's mood and audience.
+> Available palettes are listed below — read the one you pick from
+> `references/palettes/<file>`. If none fits, invent a custom palette
+> using the same CSS variable names."
 
-## Extra deep hexes (surfaces/accents)
-
-`#084d6e` `#3b1635` `#46093e` `#257e1a` `#066603` `#1f4919`
-`#a82517` `#a2190d` `#a1120b` `#86110a` `#8146DC`
+Then list the table above so `frontend-design` can make an informed choice.

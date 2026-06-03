@@ -5,8 +5,10 @@ when the briefing calls for a different mood, audience, or brand.
 
 ## Palette
 
-Read `references/palette.md` for the CSS `:root` block and contrast rules.
-To use a custom palette, replace that file — keep the same variable names.
+See `references/palette.md` for the full palette catalog. Individual palettes
+live in `references/palettes/<name>.md` — each contains a CSS `:root` block,
+contrast rules, and extra colors. All palettes use the same variable names, so
+the taxonomy and tempero references below work with any of them.
 
 ## Typography
 
