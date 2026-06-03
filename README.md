@@ -15,6 +15,7 @@ npx skills add gvieira18/skills
 | Skill | Description |
 |-------|-------------|
 | [artifact](skills/artifact/) | Generate self-contained HTML artifacts for visual communication — code flows, architecture diagrams, data dashboards, explainers, presentations |
+| [commit-it](skills/commit-it/) | Commit changes using Conventional Commits with atomic, single-concern commits grouped by logical context |
 
 ## Install a Specific Skill
 
