@@ -1,0 +1,8 @@
+{
+  "name": "gabriel-skills",
+  "description": "Gabriel's skill collection — artifact generation, commit helpers, and more.",
+  "skills": [
+    "./skills/artifact",
+    "./skills/commit-it"
+  ]
+}
