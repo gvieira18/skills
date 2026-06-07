@@ -21,6 +21,24 @@ same variable names so `art-direction.md` references work unchanged.
 | 6 | **Light Paper** | `palettes/light-paper.md` | Warm off-white, blue/violet accents |
 | 7 | **Light Stone** | `palettes/light-stone.md` | Warm taupe, amber/purple jewel-tone accents |
 
+## Selection Heuristics
+
+Match palette to **content domain**, not personal preference. The palette
+should feel native to the narrative's subject matter.
+
+| Content domain | Recommended | Why |
+|---|---|---|
+| Database, infrastructure, DevOps, CLI, terminal output | **Cyber Terminal** | Navy + neon green/cyan makes code blocks and data tables feel native |
+| Community dashboards, social features, contributor reports | **Community Purple** | Purple/pink/teal carries a social, community-oriented tone |
+| Design/UX reports, documentation, editorial content | **Light Paper** or **Light Stone** | Light backgrounds suit reading-heavy, non-technical audiences |
+| High-energy announcements, launches, hype content | **Cyberpunk Neon** | Max neon glows convey energy and excitement |
+| Architecture, system design, technical deep-dives | **Deep Blue + Violeta** | Royal indigo feels authoritative for structural content |
+| Neutral dashboards, metrics, observability | **Zinc + Emerald** | Subdued zinc keeps data front-and-center without distraction |
+
+When in doubt: if the content is **code-heavy**, pick a dark palette with
+monospace-friendly accents. If the content is **prose-heavy**, consider a
+light palette for sustained reading comfort.
+
 ## Auto mode
 
 When the user picks **"auto"**, do NOT read any palette file yet. Instead,

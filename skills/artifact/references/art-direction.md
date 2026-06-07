@@ -19,6 +19,11 @@ Do NOT use generic fonts (Inter, Roboto, Arial). Pair via Google Fonts CDN:
 
 Vary font choices between artifact generations — never converge on the same pairing.
 
+**Example pairing** (ops/infra report with Cyber Terminal palette):
+- Display: **Space Mono** — monospace display font reinforces terminal aesthetic
+- Body: **Outfit** — clean geometric sans, readable, doesn't compete with mono accents
+- Code: **JetBrains Mono** — industry standard, familiar to dev audience
+
 ## Taxonomy of Information Forms
 
 Repertoire, not templates. Mix, adapt, invent hybrids. The LLM picks the
@@ -39,6 +44,50 @@ form(s) that best serve the narrative.
 
 Multiple forms can coexist in one artifact. Short prose connects them —
 the artifact is narrative, not a diagram dump.
+
+## Color Semantics
+
+Use color consistently throughout the artifact to encode meaning. Map
+semantic variables to a **fixed vocabulary** so the reader never has to
+re-learn what a color means mid-document.
+
+| Meaning | CSS vars | Usage |
+|---|---|---|
+| Correct, fixed, new, success | `--add`, `--brand-2`, `--st-open` | "After" panels, positive badges, resolved states |
+| Wrong, broken, removed, problem | `--del`, `--accent-mag` | "Before" panels, error badges, risk callouts |
+| Neutral highlight, category, structure | `--brand`, `--teal` | Borders, section labels, table headers |
+| Warning, caution, attention | `--t-issue` (amber) | Warning callouts, medium-priority categories |
+| Secondary, skipped, not applicable | `--faint`, `--muted` | De-emphasized text, disabled states |
+
+Once a color-to-meaning mapping is established in section 1, maintain it
+through the entire artifact. Inconsistent color semantics break scannability.
+
+## Component Patterns
+
+Reusable building blocks. Combine with taxonomy forms — these are
+implementation patterns, not layouts.
+
+| Component | Good for | Pattern |
+|---|---|---|
+| **Flow node** | Strategy diagrams, category cards, architecture blocks | Surface bg + border + optional glow (`box-shadow: 0 0 20px rgba(...)`) |
+| **Terminal block** | Production procedures, CLI instructions, shell output | Fake terminal chrome (dot bar + title) + colored output lines (`--add`/`--del`) |
+| **Data table** | Module breakdowns, comparison stats, metrics | Monospace font, `--brand` headers, last-row bold for totals |
+| **Timeline** | Context history, chronological events, changelogs | `border-left` with colored dots, color-coded by era/status |
+| **Commit list** | Git history, changelog sections | Hash in mono + type badge (`--t-commit`) + description |
+| **Before/After/Step** | Migration flows, transformation explanations | 3-column layout: before (`--del`) → step → after (`--add`) |
+
+### Design Heuristics (from production artifacts)
+
+**What works well:**
+- Terminal blocks for operational procedures — makes steps feel concrete and executable
+- Before/After flow diagrams — 3-column layout more effective than prose for transformations
+- Color-coded category badges — consistent color mapping makes classification scannable at a glance
+- Numbered chapter layout for long-form reports — enables "check section 06" referencing
+
+**Watch out for:**
+- Multi-column layouts break on narrow screens — provide a stacked fallback
+- Long data tables benefit from collapsible sections
+- Raw stats tables can often be replaced with horizontal bar charts for faster visual comparison
 
 ## Visual Tempero (use 2-4 per artifact max)
 
