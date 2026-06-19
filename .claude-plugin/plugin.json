@@ -4,6 +4,7 @@
   "skills": [
     "./skills/artifact",
     "./skills/commit-it",
+    "./skills/php-checks",
     "./skills/ship"
   ]
 }
