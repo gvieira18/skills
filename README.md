@@ -16,6 +16,7 @@ npx skills add gvieira18/skills
 |-------|-------------|
 | [artifact](skills/artifact/) | Generate self-contained HTML artifacts for visual communication — code flows, architecture diagrams, data dashboards, explainers, presentations |
 | [commit-it](skills/commit-it/) | Commit changes using Conventional Commits with atomic, single-concern commits grouped by logical context |
+| [php-checks](skills/php-checks/) | Run Rector, Pint, PHPStan, and Pest on Laravel projects — auto-fix everything, fail on what remains |
 | [ship](skills/ship/) | Branch, commit, push, and open a pull request in one command |
 
 ## Install a Specific Skill
