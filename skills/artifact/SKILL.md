@@ -85,23 +85,9 @@ orchestrates briefing, narrative articulation, and HTML generation (via
 7. **Approval gate.** Ask the user: approved, or "adjust: ...".
    - **"adjust: ..."** → re-invoke `frontend-design` with the delta appended
      to the original context. Overwrite the same file. Loop to step 6.
-   - **Approved** → proceed to step 8.
-
-8. **Upload offer.** After approval, ALWAYS ask: "Want me to upload to
-   waifuvault for a shareable link?" This is a separate, explicit question —
-   never skip it.
-   - **Yes** → run the upload command below, show the URL.
-   - **No** → done. The file stays at `/tmp/artifacts/...`.
-
-   Upload command:
-   ```bash
-   curl -s --request PUT 'https://waifuvault.moe/rest' \
-     --header 'Content-Type: multipart/form-data' \
-     --form "file=@<path>"
-   ```
-   Extract URL with `jq -r '.url'`. Show the clean link.
-   If curl fails or response has no `.url`: show the error and remind the
-   user the file is still at `/tmp/artifacts/...` for manual upload.
+   - **Approved** → done. The file stays at `/tmp/artifacts/...`. Do NOT offer
+     to upload — the user shares it manually when ready (the `waifu-it` skill,
+     or `! waifu-it /tmp/artifacts/...`).
 
 ## GUARDRAILS (pass verbatim to `frontend-design`)
 
@@ -115,7 +101,6 @@ orchestrates briefing, narrative articulation, and HTML generation (via
 
 ## Rules
 
-- NEVER upload without explicit user approval.
 - NEVER save the artifact inside a git repo.
 - The artifact is always 1 self-contained `.html` file (guardrails invariant).
 - Show narrative brief to user before generating — no silent generation.

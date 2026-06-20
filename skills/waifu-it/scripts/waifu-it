@@ -1,0 +1,102 @@
+#!/usr/bin/env bash
+
+# =============================================
+# WaifuVault file upload  (bundled with the waifu-it skill)
+# Uploads a file to WaifuVault and prints the
+# resulting shareable URL on success.
+#
+# Usage: waifu-it [options] <file>
+#
+# Options:
+#   -e, --expires <dur>    Retention, e.g. 30m, 1h, 1d. Blank = default policy.
+#   -p, --password <pass>  Encrypt the file server-side with a password.
+#                          (Fetching it later needs the `x-password` header.)
+#   -H, --hide-filename    Keep the filename out of the returned URL.
+#   -1, --one-time         Delete the file as soon as it is accessed once.
+#   -h, --help             Show this help.
+#
+# Deps: curl, jq
+# =============================================
+
+set -euo pipefail
+
+usage() {
+  cat <<'EOF'
+Usage: waifu-it [options] <file>
+
+Upload a file to WaifuVault and print the shareable URL.
+
+Options:
+  -e, --expires <dur>    Retention, e.g. 30m, 1h, 1d. Blank = default policy.
+  -p, --password <pass>  Encrypt the file server-side with a password.
+                         (Fetching it later needs the `x-password` header.)
+  -H, --hide-filename    Keep the filename out of the returned URL.
+  -1, --one-time         Delete the file as soon as it is accessed once.
+  -h, --help             Show this help.
+EOF
+}
+
+main() {
+  local file="" expires="" password=""
+  local hide_filename="false" one_time="false"
+
+  while [[ $# -gt 0 ]]; do
+    case "$1" in
+      -e | --expires)       expires="${2:-}"; shift 2 ;;
+      -p | --password)      password="${2:-}"; shift 2 ;;
+      -H | --hide-filename) hide_filename="true"; shift ;;
+      -1 | --one-time)      one_time="true"; shift ;;
+      -h | --help)          usage; return 0 ;;
+      --)                   shift; file="${1:-}"; break ;;
+      -*)                   echo "Error: unknown option: $1" >&2; usage >&2; return 1 ;;
+      *)                    file="$1"; shift ;;
+    esac
+  done
+
+  if [[ -z "$file" ]]; then
+    echo "Usage: waifu-it [options] <file>" >&2
+    return 1
+  fi
+  if [[ ! -f "$file" ]]; then
+    echo "Error: file not found: $file" >&2
+    return 1
+  fi
+
+  local dep
+  for dep in curl jq; do
+    if ! command -v "$dep" >/dev/null 2>&1; then
+      echo "Error: missing dependency: $dep" >&2
+      return 1
+    fi
+  done
+
+  # Build query string from the modifier params (all `in: query` per the API).
+  local query=()
+  [[ -n "$expires" ]] && query+=("expires=$expires")
+  [[ "$hide_filename" == "true" ]] && query+=("hide_filename=true")
+  [[ "$one_time" == "true" ]] && query+=("one_time_download=true")
+
+  local endpoint="https://waifuvault.moe/rest"
+  if ((${#query[@]})); then
+    local IFS='&'
+    endpoint="${endpoint}?${query[*]}"
+  fi
+
+  # File goes as multipart; password (if any) is a multipart field, not a query.
+  local form=(--form "file=@$file")
+  [[ -n "$password" ]] && form+=(--form "password=$password")
+
+  local response url
+  response=$(curl -s --request PUT --url "$endpoint" "${form[@]}")
+  url=$(echo "$response" | jq -r '.url // empty')
+
+  if [[ -z "$url" ]]; then
+    echo "Upload failed. Response:" >&2
+    echo "$response" >&2
+    return 1
+  fi
+
+  echo "$url"
+}
+
+main "$@"

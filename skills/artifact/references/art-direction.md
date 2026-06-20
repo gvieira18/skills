@@ -24,6 +24,17 @@ Vary font choices between artifact generations — never converge on the same pa
 - Body: **Outfit** — clean geometric sans, readable, doesn't compete with mono accents
 - Code: **JetBrains Mono** — industry standard, familiar to dev audience
 
+## Layout
+
+Default the main content container to **`max-w-6xl`** (1152px), not the
+narrower `max-w-3xl` (768px). The wider measure gives code blocks, commit
+lists, data tables, and module bars room to breathe without feeling cramped.
+
+- Go narrower (`max-w-3xl`/`max-w-4xl`) only for prose-dominant artifacts where
+  a tight measure aids readability
+- Go wider (`max-w-7xl` / full-bleed) for dashboards or dense multi-column grids
+- Keep generous horizontal padding so content never touches the viewport edge
+
 ## Taxonomy of Information Forms
 
 Repertoire, not templates. Mix, adapt, invent hybrids. The LLM picks the

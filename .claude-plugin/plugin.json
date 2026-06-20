@@ -5,6 +5,7 @@
     "./skills/artifact",
     "./skills/commit-it",
     "./skills/php-checks",
-    "./skills/ship"
+    "./skills/ship",
+    "./skills/waifu-it"
   ]
 }
