@@ -106,6 +106,10 @@ Output the PR URL.
 
 - ALWAYS detect the default branch dynamically — never hardcode `main`
 - ALWAYS delegate committing to the commit-it skill — never commit directly
+- NEVER modify working-tree content — ship only branches, commits (via
+  commit-it), pushes, and opens a PR. The working tree is the source of truth:
+  never recover absent files from history (see commit-it's Fidelity section). If
+  content looks surprisingly missing, stop and ask
 - ALWAYS follow the 50/72 rule for PR titles
 - ALWAYS push with `-u` to set upstream tracking
 - NEVER force-push

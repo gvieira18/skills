@@ -9,6 +9,20 @@ description: >
 Commit staged and unstaged changes using Conventional Commits with atomic,
 single-concern commits.
 
+## Fidelity — the working tree is the source of truth
+
+A commit records exactly what is in the working tree right now. Your job is to
+faithfully persist the current state — never to decide what *should* be there.
+
+- **Absence is intentional.** A deleted, moved, or missing file is a change to
+  be committed, not a problem to fix. Stage deletions like any other change.
+- **Never reintroduce absent content.** Do not pull files or hunks back from
+  git history, other branches, the stash, or dropped/reflog commits during a
+  commit flow.
+- **Surprise → ask, don't recover.** If something looks surprisingly missing
+  (e.g. files you recall creating earlier this session are gone), STOP and ask
+  the user. Treat the absence as deliberate until they say otherwise.
+
 ## Flow
 
 1. **Inspect**: `git status`, `git diff`, `git diff --cached`
@@ -80,6 +94,12 @@ When a single file has changes belonging to multiple concerns:
 
 ## Rules
 
+- NEVER reintroduce content absent from the working tree, and NEVER run
+  history-recovery commands during a commit flow: `git checkout <ref> -- <path>`,
+  `git restore --source=<ref>`, `git revert`, `git reset --hard`,
+  `git cherry-pick`, `git stash pop`/`apply`, or `git apply` of a patch sourced
+  from history
+- NEVER auto-recover surprisingly missing content — stop and ask the user
 - NEVER use `git add .` or `git add -A`
 - NEVER use `git add -p` or `git add -i` (interactive mode not supported)
 - NEVER create a single commit when changes span multiple concerns
