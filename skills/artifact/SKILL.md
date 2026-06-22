@@ -86,8 +86,7 @@ orchestrates briefing, narrative articulation, and HTML generation (via
    - **"adjust: ..."** → re-invoke `frontend-design` with the delta appended
      to the original context. Overwrite the same file. Loop to step 6.
    - **Approved** → done. The file stays at `/tmp/artifacts/...`. Do NOT offer
-     to upload — the user shares it manually when ready (the `waifu-it` skill,
-     or `! waifu-it /tmp/artifacts/...`).
+     to upload — the user shares it manually when ready.
 
 ## GUARDRAILS (pass verbatim to `frontend-design`)
 
