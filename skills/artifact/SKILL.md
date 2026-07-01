@@ -59,9 +59,20 @@ orchestrates briefing, narrative articulation, and HTML generation (via
      palette using the same CSS variable names."
 
 4. **Prepare the build.**
-   - Generate a kebab-case slug from the topic
-   - `mkdir -p /tmp/artifacts`
-   - Output path: `/tmp/artifacts/<YYYY-MM-DD>-<slug>.html`
+   - **Resolve the durable base dir** — two cases only:
+     - If `$CLAUDE_ARTIFACTS_DIR` is set → use it verbatim (explicit override).
+     - Otherwise → `$HOME/.local/share/claude/artifacts` (fixed default).
+     Create it if needed. The home-based default is outside any repo, so the
+     "never inside a git repo" guardrail holds automatically.
+   - **Build a meaningful name.** `<YYYY-MM-DD>-<kebab-title>-<shortid>.html`:
+     - `kebab-title` — 3–5 kebab-case words derived from the **thesis subject**
+       (step 2), audience-meaningful — e.g. `he4rt-faculdade-censo`, not
+       `colleges-survey-results`.
+     - `shortid` — a 4-char base36 id from a hash of the title + current
+       timestamp, so two runs on the same topic never clobber each other.
+   - **Output path:** `<base>/<YYYY-MM-DD>-<kebab-title>-<shortid>.html`.
+     Compute it **once here** and reuse it for the whole session (the "adjust:"
+     loop in step 7 must not recompute a new shortid).
    - Read the selected palette file (unless Auto — see step 3)
    - Read `references/art-direction.md` for taxonomy and visual vocabulary
 
@@ -78,15 +89,18 @@ orchestrates briefing, narrative articulation, and HTML generation (via
      You are not restricted to any template."
    - Instruction: "Save the file to `<path>`"
 
-6. **Deliver.** Print the path as a clickable link:
-   `file:///tmp/artifacts/<YYYY-MM-DD>-<slug>.html`
+6. **Deliver.** Print the resolved output path from step 4 as a clickable link:
+   `file://<base>/<YYYY-MM-DD>-<kebab-title>-<shortid>.html`
    Never auto-open the browser.
 
 7. **Approval gate.** Ask the user: approved, or "adjust: ...".
    - **"adjust: ..."** → re-invoke `frontend-design` with the delta appended
-     to the original context. Overwrite the same file. Loop to step 6.
-   - **Approved** → done. The file stays at `/tmp/artifacts/...`. Do NOT offer
-     to upload — the user shares it manually when ready.
+     to the original context. Overwrite the **same path** from step 4 (keep the
+     same shortid — do not recompute). Loop to step 6.
+   - **Approved** → done. The file stays in the durable base dir. Append one
+     discovery line to `<base>/index.md`:
+     `- [<human title>](<filename>) — <YYYY-MM-DD> — <one-line thesis>`
+     Do NOT offer to upload — the user shares it manually when ready.
 
 ## GUARDRAILS (pass verbatim to `frontend-design`)
 
@@ -96,7 +110,8 @@ orchestrates briefing, narrative articulation, and HTML generation (via
   via CDN.
 - No relative paths (`./`, `../`) for assets. Fonts: system stack or
   Google Fonts CDN.
-- NEVER save inside a git repository — always `/tmp/artifacts/`.
+- NEVER save inside a git repository — always the durable base dir resolved in
+  step 4 (`$CLAUDE_ARTIFACTS_DIR` if set, else `$HOME/.local/share/claude/artifacts`).
 
 ## Rules
 
