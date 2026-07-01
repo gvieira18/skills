@@ -78,7 +78,8 @@ orchestrates briefing, narrative articulation, and HTML generation (via
 
 5. **Invoke `frontend-design`.** Use the Skill tool passing this context:
    - The narrative brief from step 2
-   - The GUARDRAILS block (below) — pass it verbatim
+   - The GUARDRAILS from `references/guardrails.md` — read the file and pass
+     it verbatim
    - The palette (CSS variables + contrast rules) — either the specific
      palette chosen in step 3, or the full catalog + auto-selection
      instruction
@@ -102,16 +103,12 @@ orchestrates briefing, narrative articulation, and HTML generation (via
      `- [<human title>](<filename>) — <YYYY-MM-DD> — <one-line thesis>`
      Do NOT offer to upload — the user shares it manually when ready.
 
-## GUARDRAILS (pass verbatim to `frontend-design`)
+## GUARDRAILS
 
-- Single `.html` file. No separate CSS/JS/image files.
-- Tailwind via `<script src="https://cdn.tailwindcss.com"></script>`.
-- Icons: SVG inline or emoji. Diagrams: HTML/CSS, inline SVG, or Mermaid
-  via CDN.
-- No relative paths (`./`, `../`) for assets. Fonts: system stack or
-  Google Fonts CDN.
-- NEVER save inside a git repository — always the durable base dir resolved in
-  step 4 (`$CLAUDE_ARTIFACTS_DIR` if set, else `$HOME/.local/share/claude/artifacts`).
+The invariant generation rules live in `references/guardrails.md` — a single
+file passed **verbatim** to `frontend-design` (step 5). Highlights: one
+self-contained `.html`, never inside a git repo, no **Syne** font, no
+graph-paper grid backgrounds. Read the file for the full list.
 
 ## Rules
 

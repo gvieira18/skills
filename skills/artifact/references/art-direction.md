@@ -12,8 +12,9 @@ the taxonomy and tempero references below work with any of them.
 
 ## Typography
 
-Do NOT use generic fonts (Inter, Roboto, Arial). Pair via Google Fonts CDN:
-- **Display** (titles): characterful, memorable (e.g. Fraunces, Playfair Display, Syne)
+Do NOT use generic fonts (Inter, Roboto, Arial) or Syne (see `guardrails.md`).
+Pair via Google Fonts CDN:
+- **Display** (titles): characterful, memorable (e.g. Fraunces, Playfair Display, Sora)
 - **Body** (prose): legible, clean (e.g. Hanken Grotesk, DM Sans, Source Sans 3)
 - **Mono** (code/data): JetBrains Mono, Fira Code, or IBM Plex Mono
 
