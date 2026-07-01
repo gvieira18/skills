@@ -22,6 +22,7 @@ skills/
 ## Conventions
 
 - Skills are pure markdown instruction sets — no code, no scripts
+- Factor reusable or verbatim-passed content into a single `references/<topic>.md` file and point to it from SKILL.md — don't inline it (e.g. `artifact`'s palettes, art-direction, guardrails)
 - SKILL.md frontmatter uses `name` and `description` fields
 - Commit messages follow Conventional Commits with the 50/72 rule
 - Skill names are lowercase kebab-case
