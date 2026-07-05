@@ -31,8 +31,9 @@ orchestrates briefing, narrative articulation, and HTML generation (via
    Show the brief to the user. If you can't formulate the thesis, ask for
    more context — don't proceed without clarity.
 
-3. **Choose palette.** Present the palette menu to the user using `AskUserQuestion`.
-   Read `references/palette.md` for the full catalog. Offer these options:
+3. **Choose palette or mode.** Present the menu to the user using `AskUserQuestion`.
+   Read `references/palette.md` for the full catalog. Offer the 7 named palettes plus
+   two smart modes:
 
    | Option | Description |
    |--------|-------------|
@@ -43,20 +44,25 @@ orchestrates briefing, narrative articulation, and HTML generation (via
    | **Cyberpunk Neon** | Near-black, max neon glows — dark |
    | **Light Paper** | Warm off-white, blue/violet — light |
    | **Light Stone** | Warm taupe, amber/purple jewels — light |
-   | **Auto** | Let the AI choose the best palette for this narrative |
+   | **Auto** | AI picks the best-*fitting* catalog palette for this narrative |
+   | **Wildcard** | Deliberately *ignore* the default; invent a fresh look |
 
    AskUserQuestion only supports 4 options — group them sensibly (e.g.
-   "Dark: Community Purple (default)", "Dark: other...", "Light: pick one...",
-   "Auto"). If the user picks a group, follow up with the specific choices.
+   "Community Purple (default)", "Other palette…", "Auto", "Wildcard"). If the user
+   picks a group, follow up with the specific choices.
 
-   - If a specific palette is chosen → read it from
-     `references/palettes/<file>.md`
-   - If **Auto** is chosen → do NOT read any palette file yet. Instead,
-     pass the full palette catalog table (from `references/palette.md`) to
-     `frontend-design` with this instruction: "Choose the palette that best
-     serves this narrative's mood and audience. Read the palette you pick
-     from `references/palettes/<file>`. If none fits, invent a custom
-     palette using the same CSS variable names."
+   Handling per choice:
+   - **Specific palette** → read it from `references/palettes/<file>.md`.
+   - **Auto** → do NOT read any palette file yet. Pass the full catalog table
+     (from `references/palette.md`) to `frontend-design`: "Choose the palette that
+     best serves this narrative's mood and audience. Read the palette you pick from
+     `references/palettes/<file>`. If none fits, invent a custom palette using the
+     same CSS variable names."
+   - **Wildcard** → deliberately diverge. Do NOT read a palette file. Instruct
+     `frontend-design`: "Invent a fresh, cohesive palette using our CSS variable
+     names and a font pairing you have not used recently. Don't default to Community
+     Purple. Pick an unexpected mood that still serves the narrative." Vary it every
+     run — never converge.
 
 4. **Prepare the build.**
    - **Resolve the durable base dir** — two cases only:

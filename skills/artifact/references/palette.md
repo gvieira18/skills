@@ -50,3 +50,16 @@ pass this instruction to `frontend-design`:
 > using the same CSS variable names."
 
 Then list the table above so `frontend-design` can make an informed choice.
+
+## Wildcard mode
+
+When the user picks **"wildcard"**, deliberately diverge — the goal is novelty, not
+fit. Do NOT read a palette file. Pass this instruction to `frontend-design`:
+
+> "Invent a fresh, cohesive palette using the same CSS variable names as our
+> catalog, paired with a display/body/mono font trio you have not used recently. Do
+> not default to Community Purple. Choose an unexpected mood that still serves the
+> narrative's audience."
+
+Vary the result on every run — the point of this mode is to never converge on the
+same look twice.
