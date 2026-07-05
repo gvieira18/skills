@@ -74,6 +74,13 @@ re-learn what a color means mid-document.
 Once a color-to-meaning mapping is established in section 1, maintain it
 through the entire artifact. Inconsistent color semantics break scannability.
 
+**Color is never the *only* cue (WCAG 1.4.1).** Whenever a hue encodes state, pair
+it with a redundant non-color signal — a text label, an icon, or a shape — so the
+meaning survives for colorblind readers. A before/after pair carries "Before"/"After"
+text, not just red/green panels; a badge holds a word or icon, not a bare colored
+dot. The color reinforces the meaning; it never carries it alone. (See `guardrails.md`
+→ Accessibility.)
+
 ## Component Patterns
 
 Reusable building blocks. Combine with taxonomy forms — these are

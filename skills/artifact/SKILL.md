@@ -128,8 +128,10 @@ The invariant generation rules live in `references/guardrails.md` — a single
 file passed **verbatim** to `frontend-design` (step 5). Highlights: one
 self-contained `.html`, never inside a git repo, no **Syne** font, no
 graph-paper grid backgrounds, no clipping on unknown/phone viewports (wide
-content scrolls in its own container), and any embedded fetched/user text is
-escaped. Read the file for the full list.
+content scrolls in its own container), any embedded fetched/user text is
+escaped, and the a11y floor holds (WCAG 2.2 AA — visible keyboard focus, meaning
+never carried by color alone, native controls, semantic headings). Read the file
+for the full list.
 
 ## Rules
 

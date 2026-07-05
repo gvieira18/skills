@@ -73,3 +73,36 @@ force the page to scroll sideways.
 - **Self-check before finishing:** re-read the generated HTML for fixed widths,
   `nowrap`, and clip-prone content, and confirm every wide block is in its own
   scroll container. Fix anything that would clip on a phone.
+
+## Accessibility (non-negotiable)
+
+The reader may be colorblind, keyboard-only, or on a screen reader. Contrast and
+reduced-motion are already handled (palette files + skeleton invariants); these
+close the rest. WCAG 2.2 AA.
+
+- **Never carry meaning by color alone (1.4.1).** Every color-encoded state needs
+  a redundant non-color cue. A before/after pair gets "Before"/"After" *text*, not
+  just `--del`/`--add` panels; a status badge carries a word or icon, not a bare
+  colored dot; a timeline dot pairs its color with a label. *Why:* ~8% of men can't
+  separate red from green, and the whole semantic layer collapses for them otherwise.
+- **Everything clickable is a native control (2.1.1).** Use `<button>`, `<a href>`,
+  or `<details>`/`<summary>` for toggles, collapsibles, and nav — never a
+  `<div onclick>`. *Why:* native elements are keyboard-operable and announce their
+  role for free; a bare div is unreachable without a mouse. If you truly cannot use
+  one, add `role`, `tabindex="0"`, and an Enter/Space `keydown` handler.
+- **Keyboard focus stays visible (2.4.7).** The skeleton ships a `:focus-visible`
+  outline — do not remove it or blanket `outline:none`. Any custom focus style must
+  stay ≥3:1 against its background.
+- **Semantic structure (1.3.1 / 2.4.6).** Wrap the page in `<main>`; use one `<h1>`
+  then nested `<h2>`/`<h3>` for chapters and sections (real headings, not styled
+  `<div>`s). "Numbered chapters" are still headings. *Why:* screen-reader users
+  navigate by heading and landmark; a flat div soup has no map.
+- **Images, icons, diagrams (1.1.1).** Decorative SVG/grain/avatar-ring →
+  `aria-hidden="true"`. Meaningful icon or chart → `role="img"` + `aria-label`.
+  A complex diagram (flow, architecture, timeline) that carries the thesis needs a
+  concise text alternative near it — the diagram is often the argument, not decoration.
+- **Target size (2.5.8).** Interactive targets (chip-buttons, toggles, icon buttons)
+  are ≥24×24 CSS px. Inline text links are exempt.
+- **Non-text contrast (1.4.11).** Borders, focus rings, and color-coded dots that
+  convey meaning need ≥3:1 against what's adjacent — the palette's text-contrast check
+  does not cover these.
