@@ -13,7 +13,14 @@ or briefing.
 
 ## Assets & delivery
 
-- Tailwind via `<script src="https://cdn.tailwindcss.com"></script>`.
+- Tailwind **v4** via the browser build:
+  `<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>`.
+  Our palette `:root` custom properties stay plain CSS (consumed via `var(--x)`) —
+  they don't need `@theme`. If you *do* want custom Tailwind utilities, add a
+  `<style type="text/tailwindcss">@import "tailwindcss"; @theme { … }</style>` block.
+  Avoid the utilities v4 removed: use `bg-black/50` not `bg-opacity-50`, `shrink-*`
+  / `grow-*` not `flex-shrink-*` / `flex-grow-*`, `text-ellipsis` not
+  `overflow-ellipsis`. *Why:* the v4 browser build silently no-ops removed classes.
 - Icons: SVG inline or emoji. Diagrams: HTML/CSS, inline SVG, or Mermaid via CDN.
 - No relative paths (`./`, `../`) for assets. Fonts: system stack or Google Fonts CDN.
 
