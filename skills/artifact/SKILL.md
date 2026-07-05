@@ -32,8 +32,8 @@ orchestrates briefing, narrative articulation, and HTML generation (via
    more context — don't proceed without clarity.
 
 3. **Choose palette or mode.** Present the menu to the user using `AskUserQuestion`.
-   Read `references/palette.md` for the full catalog. Offer the 7 named palettes plus
-   two smart modes:
+   Read `references/palette.md` for the full catalog. Offer the 10 named palettes
+   (5 dark, 5 light) plus two smart modes:
 
    | Option | Description |
    |--------|-------------|
@@ -44,12 +44,15 @@ orchestrates briefing, narrative articulation, and HTML generation (via
    | **Cyberpunk Neon** | Near-black, max neon glows — dark |
    | **Light Paper** | Warm off-white, blue/violet — light |
    | **Light Stone** | Warm taupe, amber/purple jewels — light |
+   | **Arctic Cool Slate** | Cool blue-white, cobalt + glacier-cyan — light |
+   | **Sage Botanical** | Green-tinted paper, forest green + clay — light |
+   | **Blush Editorial Rose** | Rose-cream, burgundy + antique-gold — light |
    | **Auto** | AI picks the best-*fitting* catalog palette for this narrative |
    | **Wildcard** | Deliberately *ignore* the default; invent a fresh look |
 
    AskUserQuestion only supports 4 options — group them sensibly (e.g.
-   "Community Purple (default)", "Other palette…", "Auto", "Wildcard"). If the user
-   picks a group, follow up with the specific choices.
+   "Dark palette…", "Light palette…", "Auto", "Wildcard") and follow up on a group
+   with its specific choices. Note **Community Purple** is the default dark pick.
 
    Handling per choice:
    - **Specific palette** → read it from `references/palettes/<file>.md`.

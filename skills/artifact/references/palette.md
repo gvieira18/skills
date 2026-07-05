@@ -22,6 +22,9 @@ let it drive tint, glow, and hierarchy decisions — not just the raw hex values
 |---|------|------|------|
 | 6 | **Light Paper** | `palettes/light-paper.md` | Warm off-white, blue/violet accents |
 | 7 | **Light Stone** | `palettes/light-stone.md` | Warm taupe, amber/purple jewel-tone accents |
+| 8 | **Arctic Cool Slate** | `palettes/arctic-cool-slate.md` | Cool blue-white, cobalt + glacier-cyan accents |
+| 9 | **Sage Botanical** | `palettes/sage-botanical.md` | Green-tinted paper, forest green + clay accents |
+| 10 | **Blush Editorial Rose** | `palettes/blush-editorial-rose.md` | Rose-cream, burgundy + antique-gold accents |
 
 ## Selection Heuristics
 
@@ -35,7 +38,10 @@ should feel native to the narrative's subject matter.
 | Design/UX reports, documentation, editorial content | **Light Paper** or **Light Stone** | Light backgrounds suit reading-heavy, non-technical audiences |
 | High-energy announcements, launches, hype content | **Cyberpunk Neon** | Max neon glows convey energy and excitement |
 | Architecture, system design, technical deep-dives | **Deep Blue + Violeta** | Royal indigo feels authoritative for structural content |
-| Neutral dashboards, metrics, observability | **Zinc + Emerald** | Subdued zinc keeps data front-and-center without distraction |
+| Neutral dashboards, metrics, observability | **Zinc + Emerald** (dark) or **Arctic Cool Slate** (light) | Subdued neutrals keep data front-and-center |
+| Corporate, product, or fintech reports in light mode | **Arctic Cool Slate** | Cool blue-white + cobalt reads crisp and professional |
+| Environmental, health, wellness, or organic-brand content | **Sage Botanical** | Green-tinted paper feels natural and calm |
+| Editorial, lifestyle, events, or elegant announcements | **Blush Editorial Rose** | Rose-cream + burgundy carries a refined, warm tone |
 
 When in doubt: if the content is **code-heavy**, pick a dark palette with
 monospace-friendly accents. If the content is **prose-heavy**, consider a

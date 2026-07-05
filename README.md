@@ -35,10 +35,14 @@ npx skills add gvieira18/skills -a codex
 
 ## Customizing the Palette
 
-The `artifact` skill ships with a default dark deep-blue + violeta palette in
-[`skills/artifact/references/palette.md`](skills/artifact/references/palette.md).
+The `artifact` skill ships with a catalog of **10 palettes — 5 dark, 5 light** —
+in [`skills/artifact/references/palette.md`](skills/artifact/references/palette.md)
+(Community Purple is the default), plus **Auto** (AI picks the best fit) and
+**Wildcard** (invent a fresh look) modes. Every palette is WCAG-checked for text
+contrast.
 
-To use your own colors: replace that file keeping the same CSS variable names
+To use your own colors: add or replace a file in `references/palettes/` keeping the
+same CSS variable names
 (`--bg`, `--brand`, `--add`, `--del`, etc.). The taxonomy and visual tempero
 references in `art-direction.md` use those variables, so they'll automatically
 pick up your palette.
