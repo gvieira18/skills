@@ -1,0 +1,67 @@
+<!doctype html>
+<!--
+  ARTIFACT SKELETON — invariant scaffold only. NOT a layout or a look.
+
+  Fill the SLOTS (title, fonts, palette :root, body) freely per the brief.
+  KEEP the lines marked "invariant" — they encode the artifact guardrails
+  (viewport, Tailwind v4 CDN, overflow discipline, reduced motion) as code
+  instead of prose. The visual identity, layout, and components are entirely
+  up to you: pick the form(s) that serve the narrative. Do not treat this
+  file as a template to imitate.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">                                        <!-- invariant -->
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- invariant -->
+
+  <!-- SLOT: title — derive from the thesis subject -->
+  <title>Artifact</title>
+
+  <!-- invariant: Tailwind v4 browser build (exact string — do not swap for the old v3 CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- SLOT: fonts — a display + body + mono trio chosen per brief (Google Fonts CDN).
+       Vary the pairing; never Syne / Inter / Roboto / Arial. Delete if using a system stack. -->
+  <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+       <link href="https://fonts.googleapis.com/css2?family=...&display=swap" rel="stylesheet"> -->
+
+  <style>
+    /* SLOT: palette — drop the chosen :root block here (from references/palettes/<name>.md) */
+    :root {
+      /* --bg / --surface / --text / --brand / --add / --del / … */
+    }
+
+    /* invariant base */
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      /* SLOT: body font-family — replace with the chosen body face */
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+
+    /* invariant robustness — wide content scrolls in its OWN container, never the page body */
+    pre, table, .scroll-x { overflow-x: auto; max-width: 100%; }
+    .break-anywhere { overflow-wrap: anywhere; word-break: break-word; }
+    img, svg, video { max-width: 100%; height: auto; }
+
+    /* invariant: honor reduced-motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <!--
+    SLOT: content — build the layout and components here.
+    Choose the information form(s) that serve the narrative (see art-direction.md);
+    you are not restricted to any structure. Keep wide blocks (tables, code,
+    diagrams, long strings) inside an overflow-x container so the page body never
+    scrolls sideways on a phone.
+  -->
+</body>
+</html>

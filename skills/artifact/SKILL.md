@@ -84,6 +84,7 @@ orchestrates briefing, narrative articulation, and HTML generation (via
      loop in step 7 must not recompute a new shortid).
    - Read the selected palette file (unless Auto — see step 3)
    - Read `references/art-direction.md` for taxonomy and visual vocabulary
+   - Read `references/skeleton.html` — the invariant scaffold to build from
 
 5. **Invoke `frontend-design`.** Use the Skill tool passing this context:
    - The narrative brief from step 2
@@ -95,6 +96,12 @@ orchestrates briefing, narrative articulation, and HTML generation (via
    - The art-direction defaults from `references/art-direction.md`
      (taxonomy, typography, tempero) — note these are defaults that
      `frontend-design` may override if the briefing warrants
+   - The invariant scaffold from `references/skeleton.html` — pass it with:
+     "Start from this skeleton. Fill the SLOTs (title, fonts, palette `:root`,
+     `<body>`) freely and build whatever layout serves the narrative, but keep
+     the lines marked *invariant* (viewport, Tailwind v4 CDN, box-sizing,
+     overflow discipline, reduced-motion). It is a scaffold, not a look — do not
+     imitate its structure."
    - Instruction: "Choose the layout form that best serves this narrative.
      You are not restricted to any template."
    - Instruction: "Save the file to `<path>`"
