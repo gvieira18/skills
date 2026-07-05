@@ -96,8 +96,11 @@ orchestrates briefing, narrative articulation, and HTML generation (via
      You are not restricted to any template."
    - Instruction: "Save the file to `<path>`"
 
-6. **Deliver.** Print the resolved output path from step 4 as a clickable link:
-   `file://<base>/<YYYY-MM-DD>-<kebab-title>-<shortid>.html`
+6. **Deliver.** Before presenting, do a quick robustness pass on the generated
+   file (per `guardrails.md` → *Layout robustness*): no horizontal body scroll,
+   wide blocks scroll in their own container, long strings wrap, nothing clips at
+   a narrow width. Then print the resolved output path from step 4 as a clickable
+   link: `file://<base>/<YYYY-MM-DD>-<kebab-title>-<shortid>.html`
    Never auto-open the browser.
 
 7. **Approval gate.** Ask the user: approved, or "adjust: ...".
@@ -114,7 +117,9 @@ orchestrates briefing, narrative articulation, and HTML generation (via
 The invariant generation rules live in `references/guardrails.md` — a single
 file passed **verbatim** to `frontend-design` (step 5). Highlights: one
 self-contained `.html`, never inside a git repo, no **Syne** font, no
-graph-paper grid backgrounds. Read the file for the full list.
+graph-paper grid backgrounds, no clipping on unknown/phone viewports (wide
+content scrolls in its own container), and any embedded fetched/user text is
+escaped. Read the file for the full list.
 
 ## Rules
 

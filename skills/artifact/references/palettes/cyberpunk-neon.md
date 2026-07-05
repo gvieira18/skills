@@ -1,4 +1,6 @@
 # Palette (cyberpunk — near-black + neon cyan/magenta/orange)
+> _Metaphor:_ a rain-slick neon alley — near-black wet asphalt under buzzing cyan and magenta signs. High-energy, hype, maximal. Let this image guide tint, glow, and hierarchy choices.
+
 Drop this `:root` block into the artifact's `<style>`. To use your own
 palette, replace this file — keep the same variable names so the taxonomy
 and tempero references in `art-direction.md` still work.

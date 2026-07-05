@@ -101,6 +101,43 @@ implementation patterns, not layouts.
 - Long data tables benefit from collapsible sections
 - Raw stats tables can often be replaced with horizontal bar charts for faster visual comparison
 
+### Deriving tints — the `color-mix` idiom
+
+Don't hand-pick pastel background hexes for panels, callouts, and banners. Derive
+them from a semantic hue mixed into the page background, so every tint tracks the
+palette automatically (and stays correct if the palette is swapped):
+
+```css
+/* tinted panel: 12% of the accent over the page bg */
+background: color-mix(in srgb, var(--st-open) 12%, var(--bg));   /* success banner  */
+background: color-mix(in srgb, var(--t-issue) 8%,  var(--bg));   /* warning strip   */
+background: color-mix(in srgb, var(--del)     6%,  var(--bg));   /* risk callout    */
+```
+
+Keep the solid hue as the text/border on top of its own tint (e.g. `--del` text on
+a `--del`-tinted panel). One accent hue thus yields a matched border + fill + text
+trio without a second variable. Works in both dark and light palettes.
+
+## Anti-Generic Discipline (surface, motion, radius)
+
+Three heuristics that fight the templated-SaaS look harder than font choice alone.
+Defaults — override when a palette's metaphor calls for something else (e.g.
+Cyberpunk Neon *is* a glow-and-shadow aesthetic).
+
+- **Paper on ink, not a card stack.** Separate surfaces with a 1px border, not a
+  drop shadow. Reserve shadows for genuinely *floating* elements (tooltips, menus,
+  modals) — never on buttons or in-flow cards. Stacked shadows read as generic
+  dashboard chrome. *(Cyberpunk/Cyber Terminal glows are the deliberate exception —
+  those are atmosphere, not elevation.)*
+- **Fades over moves. No boing.** Transitions are opacity/color fades and small
+  translates on a calm ease (`cubic-bezier(0.2,0.6,0.2,1)`), 120–320ms. No bounce,
+  spring, or elastic easing — it reads as toy-like and cheapens the piece. Hover =
+  raise emphasis (brighten text, lift a border), not a scale-up pop.
+- **Round generously, or not at all.** Commit to a radius scale (e.g. 8 / 10 / 12 /
+  14px + full-pill for chips) and use it consistently. Avoid the timid `4px` corner
+  that reads as an un-considered default — small enough to notice, too small to feel
+  intentional.
+
 ## Visual Tempero (use 2-4 per artifact max)
 
 Decorative touches that add rhythm and identity — seasoning, not structure:

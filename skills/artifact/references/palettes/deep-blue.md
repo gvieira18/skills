@@ -1,4 +1,6 @@
 # Palette (dark deep-blue + violeta) — DEFAULT
+> _Metaphor:_ a midnight planetarium — a royal-indigo dome with violet and teal starlight. Authoritative, structural, calm. Let this image guide tint, glow, and hierarchy choices.
+
 Drop this `:root` block into the artifact's `<style>`. To use your own
 palette, replace this file — keep the same variable names so the taxonomy
 and tempero references in `art-direction.md` still work.

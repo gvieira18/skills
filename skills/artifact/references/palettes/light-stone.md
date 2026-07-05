@@ -1,4 +1,6 @@
 # Palette (light — warm stone + amber accent)
+> _Metaphor:_ a stone gallery in afternoon light — warm taupe walls with amber and jewel-tone accents. Refined, tactile, unhurried. Let this image guide tint, glow, and hierarchy choices.
+
 Drop this `:root` block into the artifact's `<style>`. To use your own
 palette, replace this file — keep the same variable names so the taxonomy
 and tempero references in `art-direction.md` still work.

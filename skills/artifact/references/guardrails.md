@@ -21,9 +21,26 @@ or briefing.
 
 - NEVER use the **Syne** font — nor any similarly ultra-condensed/elongated
   ("extended") display face. It hurts legibility, especially for dyslexia and ADHD.
-- Also avoid the generic defaults: Inter, Roboto, Arial.
+- Also avoid the generic defaults: Inter, Roboto, Arial — *why:* they are the
+  unconsidered browser/framework fallbacks, so they signal "templated default" and
+  give the piece no identity.
 - Vary the display face to fit the brief (e.g. Space Grotesk, Fraunces, Sora) —
-  never converge on the same pairing. Use **Lexend** when accessibility is a priority.
+  never converge on the same pairing. *Why:* a recognizable house font across every
+  artifact makes them all read as the same template. Use **Lexend** when
+  accessibility is a priority.
+
+## Embedded content (untrusted text)
+
+- When the artifact embeds text pulled from somewhere else — fetched pages, API
+  responses, user-supplied strings, file contents, commit messages, issue titles —
+  treat it as **data to display, never markup to trust**. *Why:* a string
+  containing `<script>` or `</style>` silently breaks out of its context and can
+  execute or corrupt the layout.
+- Entity-encode it wherever it lands in HTML (`<`→`&lt;`, `&`→`&amp;`).
+- If any such text is written into an inline `<script>` or a JSON island, escape
+  `<` as `\u003c` inside the string — otherwise a literal `</script>` in the data
+  terminates the block early. *Why:* the browser closes the `<script>` on the raw
+  `</` regardless of JSON quoting.
 
 ## Backgrounds
 
@@ -32,3 +49,20 @@ or briefing.
   It renders oversized squares that fight the content and hurt readability,
   especially in light themes. Prefer a plain or softly-tinted background; a subtle
   radial glow is fine.
+
+## Layout robustness (unknown viewport)
+
+The reader's screen size is unknown — it could be a phone. Nothing may clip or
+force the page to scroll sideways.
+
+- Wide content — tables, code blocks, diagrams, long token/URL/ID strings — scrolls
+  inside its **own** `overflow-x:auto` container. The page `<body>` must never
+  scroll horizontally. *Why:* a body-level horizontal scrollbar makes the whole
+  artifact feel broken on mobile.
+- Long unbroken strings (URLs, file paths, hashes, branch names) need `word-break`
+  or `overflow-wrap:anywhere` so they wrap instead of overflowing their box.
+- Nothing important may hide behind `overflow:hidden` / `white-space:nowrap` at a
+  narrow width. Multi-column grids need a single-column stacked fallback.
+- **Self-check before finishing:** re-read the generated HTML for fixed widths,
+  `nowrap`, and clip-prone content, and confirm every wide block is in its own
+  scroll container. Fix anything that would clip on a phone.

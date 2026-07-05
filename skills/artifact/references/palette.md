@@ -1,8 +1,10 @@
 # Palette Catalog
 
 Available palettes for artifacts. Each file in `references/palettes/` contains
-a full `:root` CSS block, contrast rules, and extra color values — all using the
-same variable names so `art-direction.md` references work unchanged.
+a one-line **metaphor** (a sensory anchor for the palette's mood), a full `:root`
+CSS block, contrast rules, and extra color values — all using the same variable
+names so `art-direction.md` references work unchanged. Read the metaphor first and
+let it drive tint, glow, and hierarchy decisions — not just the raw hex values.
 
 ## Dark palettes
 

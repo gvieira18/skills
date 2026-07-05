@@ -1,4 +1,6 @@
 # Palette (dark community purple — he4rt brand)
+> _Metaphor:_ a late-night community hall lit purple — pink and teal neon washing over the crowd. Social, warm, energetic. Let this image guide tint, glow, and hierarchy choices.
+
 Drop this `:root` block into the artifact's `<style>`. To use your own
 palette, replace this file — keep the same variable names so the taxonomy
 and tempero references in `art-direction.md` still work.

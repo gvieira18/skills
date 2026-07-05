@@ -1,4 +1,6 @@
 # Palette (light — warm paper + blue accent)
+> _Metaphor:_ a sunlit study desk — warm paper with a single blue fountain-pen line. Editorial, calm, made for sustained reading. Let this image guide tint, glow, and hierarchy choices.
+
 Drop this `:root` block into the artifact's `<style>`. To use your own
 palette, replace this file — keep the same variable names so the taxonomy
 and tempero references in `art-direction.md` still work.

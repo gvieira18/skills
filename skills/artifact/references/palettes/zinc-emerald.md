@@ -1,4 +1,6 @@
 # Palette (dark zinc + emerald — the artefato default)
+> _Metaphor:_ a dark instrument panel — brushed graphite with one emerald readout glowing. Subdued, data-forward, everything else steps back. Let this image guide tint, glow, and hierarchy choices.
+
 Drop this `:root` block into the artifact's `<style>`. To use your own
 palette, replace this file — keep the same variable names so the taxonomy
 and tempero references in `art-direction.md` still work.
