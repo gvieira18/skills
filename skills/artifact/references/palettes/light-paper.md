@@ -14,12 +14,12 @@ and tempero references in `art-direction.md` still work.
   --accent-mag:#7c3aed; --accent-mag-bright:#6a1feb;
   --teal:#0f766e; --teal-bright:#134fd2;
   /* semantic: type/category colors */
-  --t-pr:#7c3aed; --t-issue:#d97706; --t-commit:#2563eb;
+  --t-pr:#7c3aed; --t-issue:#b45309; --t-commit:#2563eb;
   --t-review:#0f766e; --t-comment:#2563eb; --t-reaction:#dc2626;
   /* semantic: state */
-  --st-merged:#7c3aed; --st-open:#16a34a; --st-closed:#dc2626;
+  --st-merged:#7c3aed; --st-open:#15803d; --st-closed:#dc2626;
   /* semantic: diff */
-  --add:#16a34a; --del:#dc2626;
+  --add:#15803d; --del:#dc2626;
 }
 ```
 ## Contrast rule

@@ -8,7 +8,7 @@ and tempero references in `art-direction.md` still work.
 :root {
   /* base */
   --bg:#0a0911; --surface:#15121f; --surface-2:#1d1929; --border:#2c2740;
-  --text:#f3f1f9; --muted:#9990ad; --faint:#5a5470;
+  --text:#f3f1f9; --muted:#9990ad; --faint:#6a6480;
   /* brand + accents */
   --brand:#1f109b; --brand-2:#782bf1; --brand-soft:#8f83ec;
   --accent-mag:#610e5c; --accent-mag-bright:#e359db;

@@ -12,7 +12,7 @@ and tempero references in `art-direction.md` still work.
   /* brand + accents */
   --brand:#b45309; --brand-2:#6b21a8; --brand-soft:#cc5e0a;
   --accent-mag:#6b21a8; --accent-mag-bright:#882ad5;
-  --teal:#0f766e; --teal-bright:#17b5a9;
+  --teal:#0f766e; --teal-bright:#0d6e64;
   /* semantic: type/category colors */
   --t-pr:#6b21a8; --t-issue:#854d0e; --t-commit:#b45309;
   --t-review:#0f766e; --t-comment:#166534; --t-reaction:#991b1b;
@@ -26,7 +26,10 @@ and tempero references in `art-direction.md` still work.
 LIGHT theme on a warm taupe `--bg`. The saturated jewel tones (`--brand`,
 `--accent-mag`, `--teal`, `--st-*`) are TEXT/accent colors — they're already
 deep enough to read on the pale surfaces. `--brand-soft` is a brighter amber for
-hover/emphasis. Use the `*-dim` rgba tints (8% of each accent) for callout and
-badge fills, with the solid hex as the text on top.
+hover/emphasis. In a light theme the `-bright` sibling of a mid-tone hue must go
+*deeper*, not lighter, to stay legible — `--teal-bright` #0d6e64 is a deeper pine
+for teal emphasis text (a lighter teal would wash out on the pale bg). Use the
+`*-dim` rgba tints (8% of each accent) for callout and badge fills, with the solid
+hex as the text on top.
 ## Extra surfaces / strong borders
 `#ddd9d3` (inset) `#d6d2cc` (code bg) `#a8a29e` (strong border) `#854d0e` (yellow)
