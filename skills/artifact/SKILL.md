@@ -71,8 +71,9 @@ orchestrates briefing, narrative articulation, and HTML generation (via
    - **Resolve the durable base dir** — two cases only:
      - If `$CLAUDE_ARTIFACTS_DIR` is set → use it verbatim (explicit override).
      - Otherwise → `$HOME/.local/share/claude/artifacts` (fixed default).
-     Create it if needed. The home-based default is outside any repo, so the
-     "never inside a git repo" guardrail holds automatically.
+     Create it if needed. The default is **persistent** (survives reboots —
+     never `/tmp`, which loses work on power loss). For durability and backups,
+     point `$CLAUDE_ARTIFACTS_DIR` at a git-backed directory you sync.
    - **Build a meaningful name.** `<YYYY-MM-DD>-<kebab-title>-<shortid>.html`:
      - `kebab-title` — 3–5 kebab-case words derived from the **thesis subject**
        (step 2), audience-meaningful — e.g. `he4rt-faculdade-censo`, not
@@ -126,7 +127,7 @@ orchestrates briefing, narrative articulation, and HTML generation (via
 
 The invariant generation rules live in `references/guardrails.md` — a single
 file passed **verbatim** to `frontend-design` (step 5). Highlights: one
-self-contained `.html`, never inside a git repo, no **Syne** font, no
+self-contained `.html`, no **Syne** font, no
 graph-paper grid backgrounds, no clipping on unknown/phone viewports (wide
 content scrolls in its own container), any embedded fetched/user text is
 escaped, and the a11y floor holds (WCAG 2.2 AA — visible keyboard focus, meaning
@@ -135,6 +136,6 @@ for the full list.
 
 ## Rules
 
-- NEVER save the artifact inside a git repo.
+- Save to the durable base dir from step 4 — persistent storage, never `/tmp`.
 - The artifact is always 1 self-contained `.html` file (guardrails invariant).
 - Show narrative brief to user before generating — no silent generation.
