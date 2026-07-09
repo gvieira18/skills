@@ -5,6 +5,7 @@
     "./skills/artifact",
     "./skills/commit-it",
     "./skills/php-checks",
+    "./skills/quick-commit",
     "./skills/ship"
   ]
 }
