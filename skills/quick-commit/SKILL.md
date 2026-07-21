@@ -7,6 +7,8 @@ description: >
   "commit staged", "commit the staged files". Commits only the current index as
   a single commit. For careful, multi-commit, plan-first committing use
   commit-it instead.
+model: sonnet
+context: fork
 ---
 
 Commit the **currently staged index** as a single Conventional Commit, with a

@@ -5,6 +5,8 @@ description: >
   checks — triggers include "run checks", "php-checks", "lint", "check my code",
   or before shipping PHP changes. Runs Rector, Pint, PHPStan, and Pest in
   sequence, auto-fixing everything possible.
+model: sonnet
+context: fork
 ---
 
 Run Rector, Pint, PHPStan, and Pest in sequence across the entire project.

@@ -6,6 +6,8 @@ description: >
   folder", "add docs.local", "gitignored docs folder". Creates a `docs.local/`
   directory tracked by git only through its own `.gitignore`, so every file
   dropped inside stays local (personal notes, scratchpads, AI context, drafts).
+model: haiku
+context: fork
 ---
 
 Create a `docs.local/` directory whose contents are ignored by git but whose
