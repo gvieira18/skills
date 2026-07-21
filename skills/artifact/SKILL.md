@@ -78,8 +78,9 @@ orchestrates briefing, narrative articulation, and HTML generation (via
      - `kebab-title` — 3–5 kebab-case words derived from the **thesis subject**
        (step 2), audience-meaningful — e.g. `he4rt-faculdade-censo`, not
        `colleges-survey-results`.
-     - `shortid` — a 4-char base36 id from a hash of the title + current
-       timestamp, so two runs on the same topic never clobber each other.
+     - `shortid` — a 4-char `[0-9a-z]` id; mint it per `references/shortid.md`
+       (default row 1). Its verify-and-regenerate rule is what keeps two runs on
+       the same topic from clobbering each other.
    - **Output path:** `<base>/<YYYY-MM-DD>-<kebab-title>-<shortid>.html`.
      Compute it **once here** and reuse it for the whole session (the "adjust:"
      loop in step 7 must not recompute a new shortid).
