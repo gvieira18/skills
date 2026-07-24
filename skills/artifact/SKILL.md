@@ -69,21 +69,22 @@ orchestrates briefing, narrative articulation, and HTML generation (via
 
 4. **Prepare the build.**
    - **Resolve the durable base dir** — two cases only:
-     - If `$CLAUDE_ARTIFACTS_DIR` is set → use it verbatim (explicit override).
-     - Otherwise → `$HOME/.local/share/claude/artifacts` (fixed default).
+     - If `$CLAUDE_SYNC_ARTIFACTS_DIR` is set → use it verbatim (explicit override).
+     - Otherwise → `$HOME/.local/share/claude/sync-artifacts` (fixed default).
      Create it if needed. The default is **persistent** (survives reboots —
      never `/tmp`, which loses work on power loss). For durability and backups,
-     point `$CLAUDE_ARTIFACTS_DIR` at a git-backed directory you sync.
-   - **Build a meaningful name.** `<YYYY-MM-DD>-<kebab-title>-<shortid>.html`:
+     point `$CLAUDE_SYNC_ARTIFACTS_DIR` at a git-backed directory you sync.
+   - **Build a meaningful name.** `<YYYY-MM-DD-HHMMSS>-<kebab-title>.html`:
      - `kebab-title` — 3–5 kebab-case words derived from the **thesis subject**
        (step 2), audience-meaningful — e.g. `he4rt-faculdade-censo`, not
        `colleges-survey-results`.
-     - `shortid` — a 4-char `[0-9a-z]` id; mint it per `references/shortid.md`
-       (default row 1). Its verify-and-regenerate rule is what keeps two runs on
-       the same topic from clobbering each other.
-   - **Output path:** `<base>/<YYYY-MM-DD>-<kebab-title>-<shortid>.html`.
-     Compute it **once here** and reuse it for the whole session (the "adjust:"
-     loop in step 7 must not recompute a new shortid).
+     - `HHMMSS` — second-resolution time, computed once with `date +%Y-%m-%d-%H%M%S`.
+       It both **sorts** (lexicographic = chronological, even for multiple runs the
+       same day) and **disambiguates** two runs on the same topic — the job the old
+       random `shortid` did, but readable and ordered.
+   - **Output path:** `<base>/<YYYY-MM-DD-HHMMSS>-<kebab-title>.html`.
+     Compute the timestamp **once here** and reuse it for the whole session (the
+     "adjust:" loop in step 7 must not recompute a new timestamp).
    - Read the selected palette file (unless Auto — see step 3)
    - Read `references/art-direction.md` for taxonomy and visual vocabulary
    - Read `references/skeleton.html` — the invariant scaffold to build from
@@ -112,16 +113,16 @@ orchestrates briefing, narrative articulation, and HTML generation (via
    file (per `guardrails.md` → *Layout robustness*): no horizontal body scroll,
    wide blocks scroll in their own container, long strings wrap, nothing clips at
    a narrow width. Then print the resolved output path from step 4 as a clickable
-   link: `file://<base>/<YYYY-MM-DD>-<kebab-title>-<shortid>.html`
+   link: `file://<base>/<YYYY-MM-DD-HHMMSS>-<kebab-title>.html`
    Never auto-open the browser.
 
 7. **Approval gate.** Ask the user: approved, or "adjust: ...".
    - **"adjust: ..."** → re-invoke `frontend-design` with the delta appended
      to the original context. Overwrite the **same path** from step 4 (keep the
-     same shortid — do not recompute). Loop to step 6.
+     same timestamp — do not recompute). Loop to step 6.
    - **Approved** → done. The file stays in the durable base dir. Append one
      discovery line to `<base>/index.md`:
-     `- [<human title>](<filename>) — <YYYY-MM-DD> — <one-line thesis>`
+     `- [<human title>](<filename>) — <YYYY-MM-DD HH:MM:SS> — <one-line thesis>`
      Do NOT offer to upload — the user shares it manually when ready.
 
 ## GUARDRAILS

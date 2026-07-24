@@ -8,8 +8,8 @@ or briefing.
 ## Output
 
 - Single self-contained `.html` file. No separate CSS/JS/image files.
-- Always save to the durable base dir resolved in step 4 (`$CLAUDE_ARTIFACTS_DIR`
-  if set, else `$HOME/.local/share/claude/artifacts`). A git-backed store is fine —
+- Always save to the durable base dir resolved in step 4 (`$CLAUDE_SYNC_ARTIFACTS_DIR`
+  if set, else `$HOME/.local/share/claude/sync-artifacts`). A git-backed store is fine —
   even ideal, for backups or for keeping artifacts as committed ADRs.
 
 ## Assets & delivery
