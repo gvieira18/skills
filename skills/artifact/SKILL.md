@@ -74,15 +74,15 @@ orchestrates briefing, narrative articulation, and HTML generation (via
      Create it if needed. The default is **persistent** (survives reboots —
      never `/tmp`, which loses work on power loss). For durability and backups,
      point `$CLAUDE_SYNC_ARTIFACTS_DIR` at a git-backed directory you sync.
-   - **Build a meaningful name.** `<YYYY-MM-DD-HHMMSS>-<kebab-title>.html`:
+   - **Build a meaningful name.** `<YYYYMMDD-HHMMSS>-<kebab-title>.html`:
      - `kebab-title` — 3–5 kebab-case words derived from the **thesis subject**
        (step 2), audience-meaningful — e.g. `he4rt-faculdade-censo`, not
        `colleges-survey-results`.
-     - `HHMMSS` — second-resolution time, computed once with `date +%Y-%m-%d-%H%M%S`.
+     - `HHMMSS` — second-resolution time, computed once with `date +%Y%m%d-%H%M%S`.
        It both **sorts** (lexicographic = chronological, even for multiple runs the
        same day) and **disambiguates** two runs on the same topic — the job the old
        random `shortid` did, but readable and ordered.
-   - **Output path:** `<base>/<YYYY-MM-DD-HHMMSS>-<kebab-title>.html`.
+   - **Output path:** `<base>/<YYYYMMDD-HHMMSS>-<kebab-title>.html`.
      Compute the timestamp **once here** and reuse it for the whole session (the
      "adjust:" loop in step 7 must not recompute a new timestamp).
    - Read the selected palette file (unless Auto — see step 3)
@@ -113,7 +113,7 @@ orchestrates briefing, narrative articulation, and HTML generation (via
    file (per `guardrails.md` → *Layout robustness*): no horizontal body scroll,
    wide blocks scroll in their own container, long strings wrap, nothing clips at
    a narrow width. Then print the resolved output path from step 4 as a clickable
-   link: `file://<base>/<YYYY-MM-DD-HHMMSS>-<kebab-title>.html`
+   link: `file://<base>/<YYYYMMDD-HHMMSS>-<kebab-title>.html`
    Never auto-open the browser.
 
 7. **Approval gate.** Ask the user: approved, or "adjust: ...".
