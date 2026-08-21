@@ -15,16 +15,17 @@ let it drive tint, glow, and hierarchy decisions — not just the raw hex values
 | 3 | **Community Purple** ★ default | `palettes/community-purple.md` | Deep purple, pink/teal accents (he4rt brand) |
 | 4 | **Cyber Terminal** | `palettes/cyber-terminal.md` | Navy terminal, neon green/cyan/red |
 | 5 | **Cyberpunk Neon** | `palettes/cyberpunk-neon.md` | Near-black, max neon cyan/magenta/orange glows |
+| 6 | **Nocturne Indigo** | `palettes/nocturne-indigo.md` | Cool navy, purple→cyan aurora gradient, 5 balanced accents (has light variant) |
 
 ## Light palettes
 
 | # | Name | File | Mood |
 |---|------|------|------|
-| 6 | **Light Paper** | `palettes/light-paper.md` | Warm off-white, blue/violet accents |
-| 7 | **Light Stone** | `palettes/light-stone.md` | Warm taupe, amber/purple jewel-tone accents |
-| 8 | **Arctic Cool Slate** | `palettes/arctic-cool-slate.md` | Cool blue-white, cobalt + glacier-cyan accents |
-| 9 | **Sage Botanical** | `palettes/sage-botanical.md` | Green-tinted paper, forest green + clay accents |
-| 10 | **Blush Editorial Rose** | `palettes/blush-editorial-rose.md` | Rose-cream, burgundy + antique-gold accents |
+| 7 | **Light Paper** | `palettes/light-paper.md` | Warm off-white, blue/violet accents |
+| 8 | **Light Stone** | `palettes/light-stone.md` | Warm taupe, amber/purple jewel-tone accents |
+| 9 | **Arctic Cool Slate** | `palettes/arctic-cool-slate.md` | Cool blue-white, cobalt + glacier-cyan accents |
+| 10 | **Sage Botanical** | `palettes/sage-botanical.md` | Green-tinted paper, forest green + clay accents |
+| 11 | **Blush Editorial Rose** | `palettes/blush-editorial-rose.md` | Rose-cream, burgundy + antique-gold accents |
 
 ## Selection Heuristics
 
@@ -38,6 +39,7 @@ should feel native to the narrative's subject matter.
 | Design/UX reports, documentation, editorial content | **Light Paper** or **Light Stone** | Light backgrounds suit reading-heavy, non-technical audiences |
 | High-energy announcements, launches, hype content | **Cyberpunk Neon** | Max neon glows convey energy and excitement |
 | Architecture, system design, technical deep-dives | **Deep Blue + Violeta** | Royal indigo feels authoritative for structural content |
+| Insights reports, metrics narratives, exec dashboards with light+dark toggle | **Nocturne Indigo** | Cool navy + purple→cyan gradient reads as a balanced, data-forward dashboard; ships a light variant |
 | Neutral dashboards, metrics, observability | **Zinc + Emerald** (dark) or **Arctic Cool Slate** (light) | Subdued neutrals keep data front-and-center |
 | Corporate, product, or fintech reports in light mode | **Arctic Cool Slate** | Cool blue-white + cobalt reads crisp and professional |
 | Environmental, health, wellness, or organic-brand content | **Sage Botanical** | Green-tinted paper feels natural and calm |

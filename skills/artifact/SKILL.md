@@ -32,8 +32,8 @@ orchestrates briefing, narrative articulation, and HTML generation (via
    more context — don't proceed without clarity.
 
 3. **Choose palette or mode.** Present the menu to the user using `AskUserQuestion`.
-   Read `references/palette.md` for the full catalog. Offer the 10 named palettes
-   (5 dark, 5 light) plus two smart modes:
+   Read `references/palette.md` for the full catalog. Offer the 11 named palettes
+   (6 dark, 5 light) plus two smart modes:
 
    | Option | Description |
    |--------|-------------|
