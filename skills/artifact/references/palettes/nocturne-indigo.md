@@ -38,7 +38,11 @@ diff colors are already tuned bright for legends and badges on dark.
 Titles, stat values, and bar fills use `linear-gradient(92deg,#8b7cff,#43d7e8)`
 clipped to text (`-webkit-background-clip:text`). Header glow:
 `radial-gradient(ellipse 60% 90% at 15% 0%, rgba(139,124,255,.12), transparent 60%)`
-plus a cyan echo at 85%.
+plus a cyan echo at 85%. Give gradient-clipped text `display:inline-block` +
+`padding:.04em .02em .1em` + `line-height:≥1.15` so the line-box never chops the
+glyphs, and paint the header glow on a full-bleed element (inner max-width
+container) so it fades out instead of ending at the wrapper's padding seam.
+See `guardrails.md` → Layout robustness.
 ## Extra accents (badges / legends)
 `#f2b94b` (amber) `#3ddc97` (green) `#ff6b7a` (red) `#43d7e8` (cyan)
 `#2a3a5e` (border-strong, hover) `#0d1220` (bg-inset, bars)

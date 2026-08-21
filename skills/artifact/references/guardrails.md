@@ -71,6 +71,15 @@ force the page to scroll sideways.
   or `overflow-wrap:anywhere` so they wrap instead of overflowing their box.
 - Nothing important may hide behind `overflow:hidden` / `white-space:nowrap` at a
   narrow width. Multi-column grids need a single-column stacked fallback.
+- **Gradient-clipped text** (`background-clip:text` + transparent fill, e.g. the
+  signature-gradient title/stat treatment) must be `display:inline-block` with a
+  little vertical padding (`padding:.04em .02em .1em`) and a relaxed `line-height`
+  (≥1.15). *Why:* the clip box is the line-box — a heavy display face with tight
+  `line-height`/negative tracking overflows it and the glyph edges render chopped.
+- **Full-bleed atmospheric backgrounds** (header radial glow, section wash) belong
+  on an element that spans the viewport, with an *inner* max-width container for the
+  content — never on a box already inset by a padded wrapper. *Why:* a glow painted
+  inside the padded content-box ends at a hard vertical seam instead of fading out.
 - **Self-check before finishing:** re-read the generated HTML for fixed widths,
   `nowrap`, and clip-prone content, and confirm every wide block is in its own
   scroll container. Fix anything that would clip on a phone.
